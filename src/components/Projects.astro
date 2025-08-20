@@ -1,0 +1,308 @@
+<section id="projects" class="projects-section">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    <p style="color: var(--warning); font-size: 1.5rem;">ON DEVELOPMENT!!!</p>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin-bottom: 2rem;
+    position: relative;
+    line-height: 1.2;
+  }
+
+  .section-title::before {
+    content: "# ";
+    color: var(--text-secondary);
+  }
+
+  .terminal-window {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 2rem 0;
+  }
+
+  .terminal-header {
+    background: var(--bg-tertiary);
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red {
+    background: #ff5f56;
+  }
+  .dot.yellow {
+    background: #ffbd2e;
+  }
+  .dot.green {
+    background: #27ca3f;
+  }
+
+  .terminal-title {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .terminal-body {
+    padding: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .command-line {
+    margin: 1rem 0 0.2rem 0;
+  }
+
+  .prompt {
+    color: var(--success);
+  }
+
+  .command {
+    color: var(--warning);
+  }
+
+  .output {
+    color: var(--text-primary);
+    margin: 0.5rem 0 1rem 0;
+    padding-left: 1rem;
+  }
+
+  .output.info {
+    color: var(--accent-blue);
+  }
+
+  .output .success {
+    color: var(--success);
+    font-weight: 500;
+  }
+
+  .terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background: var(--accent-blue);
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    margin-top: 1rem;
+  }
+
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-blue) 0%,
+      var(--accent-blue-hover) 100%
+    );
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-blue-dim);
+    box-shadow: 0 8px 32px rgba(88, 166, 255, 0.1);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+  }
+
+  .project-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .status-dot.active {
+    background: var(--success);
+    box-shadow: 0 0 10px rgba(35, 134, 54, 0.3);
+  }
+
+  .status-dot.development {
+    background: var(--warning);
+    box-shadow: 0 0 10px rgba(210, 153, 34, 0.3);
+  }
+
+  .status-dot.planning {
+    background: var(--text-secondary);
+  }
+
+  .status-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .project-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-tag {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+
+  .project-link:hover {
+    color: var(--accent-blue-hover);
+  }
+
+  .link-icon {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .project-card {
+      padding: 1.5rem;
+    }
+
+    .project-header {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .project-links {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tech-stack {
+      gap: 0.3rem;
+    }
+
+    .tech-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+    }
+  }
+</style>

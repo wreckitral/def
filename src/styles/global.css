@@ -1,0 +1,640 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --border-color: #30363d;
+  --text-primary: #e6edf3;
+  --text-secondary: #7d8590;
+  --accent-blue: #58a6ff;
+  --accent-blue-hover: #79c0ff;
+  --accent-blue-dim: #1f6feb;
+  --success: #238636;
+  --warning: #d29922;
+  --error: #ff6b6b;
+  --info: #58a6ff;
+  --command-help: #7d8590;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "JetBrains Mono", "Fira Code", "Monaco", "Cascadia Code", monospace;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
+  position: relative;
+  padding: 40px 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23434c56" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero .terminal-window {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  resize: none;
+}
+
+.hero .terminal-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.hero .terminal-dots {
+  display: flex;
+  gap: 8px;
+  margin-right: 16px;
+}
+
+.hero .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.hero .dot.red {
+  background: #ff5f56;
+}
+.hero .dot.yellow {
+  background: #ffbd2e;
+}
+.hero .dot.green {
+  background: #27ca3f;
+}
+
+.hero .terminal-title {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hero .terminal-body {
+  flex: 1;
+  padding: 16px;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.hero .terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  margin-bottom: 16px;
+  min-height: 0;
+  padding-right: 8px;
+}
+
+.hero .terminal-output *,
+.hero .terminal-output {
+  font-family:
+    "JetBrains Mono", "Fira Code", "Monaco", "Cascadia Code", monospace !important;
+}
+
+.hero .terminal-output::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hero .terminal-output::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.hero .terminal-output::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.hero .terminal-output::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue-dim);
+}
+
+.hero .terminal-input-container {
+  flex-shrink: 0;
+}
+
+.hero .terminal-prompt-top {
+  display: block;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+
+.hero .terminal-input-line {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.hero .prompt-user {
+  color: var(--success);
+}
+
+.hero .prompt-highlight {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.hero .prompt-path {
+  color: var(--text-primary);
+}
+
+.hero .prompt-cursor {
+  color: var(--success);
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.hero .terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: inherit;
+  flex: 1;
+  min-width: 0;
+  caret-color: var(--accent-blue);
+  caret-width: 4px;
+  -webkit-caret-width: 4px;
+  -moz-caret-width: 4px;
+  text-align: left;
+  padding: 0;
+  direction: ltr;
+  transition: caret-color 0.2s ease;
+}
+
+.hero .terminal-input:focus {
+  caret-color: var(--accent-blue);
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.hero .terminal-input::placeholder {
+  display: none;
+}
+
+.hero .terminal-output .output-line {
+  color: var(--text-primary);
+  margin: 0.2rem 0;
+  padding: 0.1rem 0;
+  word-break: break-word;
+  line-height: 1.5;
+  font-size: 14px;
+  font-family:
+    "JetBrains Mono", "Fira Code", "Monaco", "Cascadia Code", monospace;
+  white-space: normal;
+}
+
+.hero .terminal-output .output-line.preserve-format {
+  white-space: pre-wrap;
+}
+
+.hero .terminal-output div[style*="margin"] {
+  display: block;
+}
+
+.hero .error,
+.hero .terminal-output .error,
+.hero .output-line.error {
+  color: var(--error) !important;
+  font-weight: 500 !important;
+}
+
+.hero .success,
+.hero .terminal-output .success,
+.hero .output-line.success {
+  color: #238636 !important;
+  font-weight: 500 !important;
+}
+
+.hero .info,
+.hero .terminal-output .info,
+.hero .output-line.info {
+  color: var(--info) !important;
+  font-weight: 500 !important;
+}
+
+.hero .warning,
+.hero .terminal-output .warning,
+.hero .output-line.warning {
+  color: #d29922 !important;
+  font-weight: 500 !important;
+}
+
+.hero .file-list,
+.hero .terminal-output .file-list,
+.hero .output-line.file-list {
+  color: #58a6ff !important;
+  margin: 0.2rem 0;
+  padding-left: 0.5rem;
+}
+
+.hero .command-help,
+.hero .terminal-output .command-help,
+.hero .output-line.command-help {
+  color: var(--command-help) !important;
+  font-style: italic !important;
+  opacity: 0.9 !important;
+}
+
+.hero .terminal-output span.info,
+.hero .output-line span.info,
+.hero span.info {
+  color: #58a6ff !important;
+  font-weight: 500 !important;
+}
+
+.hero .terminal-output span.success,
+.hero .output-line span.success,
+.hero span.success {
+  color: #238636 !important;
+  font-weight: 500 !important;
+}
+
+.hero .terminal-output span.warning,
+.hero .output-line span.warning,
+.hero span.warning {
+  color: #d29922 !important;
+  font-weight: 500 !important;
+}
+
+.hero .terminal-output span.command-help,
+.hero .output-line span.command-help,
+.hero span.command-help {
+  color: #7d8590 !important;
+  font-style: italic !important;
+}
+
+.hero .terminal-output span.file-list,
+.hero .output-line span.file-list,
+.hero span.file-list {
+  color: #58a6ff !important;
+}
+
+.hero .terminal-output span.error,
+.hero .output-line span.error,
+.hero span.error {
+  color: #ff6b6b !important;
+  font-weight: 500 !important;
+}
+
+.hero .terminal-output *,
+.hero .terminal-output,
+.hero .output-line * {
+  font-family:
+    "JetBrains Mono", "Fira Code", "Monaco", "Cascadia Code", monospace !important;
+  max-height: calc(600px - 120px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.hero .terminal-output .command-prompt-container {
+  margin: 0.8rem 0 0.4rem 0;
+}
+
+.hero .terminal-output .command-prompt-container .output-line {
+  margin: 0.1rem 0;
+}
+
+.portfolio-section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.portfolio-section .section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  margin-bottom: 2rem;
+  position: relative;
+  line-height: 1.2;
+}
+
+.portfolio-section .section-title::before {
+  content: "# ";
+  color: var(--text-secondary);
+}
+
+.portfolio-section .terminal-window {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin: 2rem 0;
+}
+
+.portfolio-section .terminal-header {
+  background: var(--bg-tertiary);
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.portfolio-section .terminal-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.portfolio-section .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.portfolio-section .dot.red {
+  background: #ff5f56;
+}
+.portfolio-section .dot.yellow {
+  background: #ffbd2e;
+}
+.portfolio-section .dot.green {
+  background: #27ca3f;
+}
+
+.portfolio-section .terminal-title {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.portfolio-section .terminal-body {
+  padding: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.portfolio-section .command {
+  color: var(--warning);
+}
+
+.portfolio-section .output {
+  color: var(--text-primary);
+  margin: 0.5rem 0;
+}
+
+.portfolio-section .terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background: var(--accent-blue);
+  animation: portfolio-blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes portfolio-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.portfolio-section .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.portfolio-section .card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-section .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-blue) 0%,
+    var(--accent-blue-hover) 100%
+  );
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-section .card:hover::before {
+  transform: scaleX(1);
+}
+
+.portfolio-section .card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-blue-dim);
+  box-shadow: 0 8px 32px rgba(88, 166, 255, 0.1);
+}
+
+.portfolio-section .card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  margin-bottom: 1rem;
+}
+
+.portfolio-section .card-description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-section .tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.portfolio-section .tech-tag {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border-color);
+}
+
+.portfolio-section .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.portfolio-section .skill-category {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.portfolio-section .skill-category h3 {
+  color: var(--accent-blue);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.portfolio-section .skill-list {
+  list-style: none;
+}
+
+.portfolio-section .skill-list li {
+  padding: 0.3rem 0;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.portfolio-section .skill-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent-blue);
+}
+
+.portfolio-section .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: portfolioFadeIn 0.6s ease forwards;
+}
+
+@keyframes portfolioFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero .terminal-window {
+    width: 800px;
+    height: 600px;
+  }
+
+  .portfolio-section .section-title {
+    font-size: 1.5rem;
+  }
+
+  .portfolio-section .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .portfolio-section .terminal-body {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .portfolio-section .card {
+    padding: 1.5rem;
+  }
+
+  .portfolio-section .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero .terminal-output .output-line {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .hero .terminal-input {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .hero .terminal-window {
+    width: 800px;
+    height: 600px;
+  }
+
+  .portfolio-section {
+    padding: 2rem 0;
+  }
+
+  .portfolio-section .section-title {
+    font-size: 1.3rem;
+  }
+
+  .hero .terminal-output .output-line {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .hero .terminal-input {
+    font-size: 12px;
+  }
+}

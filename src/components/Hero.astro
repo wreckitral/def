@@ -1,0 +1,52 @@
+<section id="hero" class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="terminal-title">defha@dev-arch:~$</div>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-output" id="terminal-output">
+            <div class="output-line info">DefTerm</div>
+            <div class="output-line command-help">
+              Type 'help' to see available commands
+            </div>
+            <div class="output-line">
+              ─────────────────────────────────────────────────
+            </div>
+          </div>
+          <div class="terminal-input-container">
+            <div class="terminal-prompt-top">
+              <span class="prompt-user">┌──(</span><span
+                class="prompt-highlight">defha</span
+              ><span class="prompt-user">@</span><span class="prompt-highlight"
+                >dev-arch</span
+              ><span class="prompt-user">)-[</span><span class="prompt-path"
+                >~</span
+              ><span class="prompt-user">]</span>
+            </div>
+            <div class="terminal-input-line">
+              <span class="prompt-cursor">└─$ </span>
+              <input
+                type="text"
+                class="terminal-input"
+                id="terminal-input"
+                autocomplete="off"
+                spellcheck="false"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "../scripts/terminal.js";
+</script>

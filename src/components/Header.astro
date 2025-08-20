@@ -1,0 +1,59 @@
+<style>
+  .header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent-blue);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: 1rem;
+    }
+  }
+</style>
+
+<header class="header">
+  <nav class="nav container">
+    <div class="logo"><a href="#hero">$ ~/defhanaya</a></div>
+    <ul class="nav-links">
+      <li><a href="#about">./about</a></li>
+      <li><a href="#projects">./projects</a></li>
+      <li><a href="#contact">./contact</a></li>
+    </ul>
+  </nav>
+</header>
