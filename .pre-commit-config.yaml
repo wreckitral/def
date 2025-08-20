@@ -1,0 +1,65 @@
+repos:
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+      - id: check-case-conflict
+      - id: mixed-line-ending
+
+  # JavaScript/TypeScript formatting with Prettier
+  - repo: local
+    hooks:
+      - id: prettier
+        name: Prettier
+        entry: npx prettier --write
+        language: system
+        files: \.(js|jsx|ts|tsx|astro|json|yaml|yml|md|css|scss|html)$
+        pass_filenames: true
+
+  # ESLint for JavaScript/TypeScript/Astro
+  - repo: local
+    hooks:
+      - id: eslint
+        name: ESLint
+        entry: npx eslint --fix
+        language: system
+        files: \.(js|jsx|ts|tsx|astro)$
+        pass_filenames: true
+
+  # Astro check for Astro-specific issues
+  - repo: local
+    hooks:
+      - id: astro-check
+        name: Astro Check
+        entry: npx astro check
+        language: system
+        files: \.(astro|ts|tsx|js|jsx)$
+        pass_filenames: false
+
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.41.0
+    hooks:
+      - id: markdownlint
+        args: ["--fix"]
+
+# Configuration
+default_stages: [pre-commit]
+fail_fast: false
+
+# Exclude patterns
+exclude: |
+  (?x)^(
+      dist/.*|
+      node_modules/.*|
+      \.astro/.*|
+      public/.*\.min\.(js|css)$
+  )$
