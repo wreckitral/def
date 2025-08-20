@@ -1,5 +1,4 @@
 name: Build and Deploy to GitHub Pages
-
 on:
   push:
     tags:
@@ -42,10 +41,11 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true
 
       - name: Build with Astro
-        run: |
-          npm run build
+        run: npm run build
         env:
           SITE_URL: ${{ steps.pages.outputs.origin }}
 
@@ -76,6 +76,14 @@ jobs:
       - name: Get tag name
         id: tag
         run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Get tag message
+        id: tag_message
+        run: |
+          message=$(git tag -l --format='%(contents)' ${{ steps.tag.outputs.tag }})
+          echo "message<<EOF" >> $GITHUB_OUTPUT
+          echo "$message" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create Release
         uses: actions/create-release@v1
