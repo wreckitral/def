@@ -9,6 +9,8 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
+  deployments: write
 
 concurrency:
   group: "pages"
@@ -41,7 +43,6 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
-        with:
 
       - name: Build with Astro
         run: npm run build
