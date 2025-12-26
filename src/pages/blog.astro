@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Layout title="Blog - defha">
+  <Header />
+
+  <main class="blog-page">
+    <div class="blog-container">
+      <header class="blog-header">
+        <h1 class="page-title">Blog</h1>
+        <p class="page-description">
+          bunch of my takes on Programming, mostly GPU programming, Backend, and
+          some other system things
+        </p>
+      </header>
+
+      <div class="posts-grid">
+        {
+          sortedPosts.map((post) => {
+            const formattedDate = post.data.date.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            });
+
+            return (
+              <article class="post-card">
+                {post.data.image && (
+                  <img
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class="post-thumbnail"
+                  />
+                )}
+
+                <div class="post-content">
+                  <time
+                    class="post-date"
+                    datetime={post.data.date.toISOString()}
+                  >
+                    📅 {formattedDate}
+                  </time>
+
+                  <h2 class="post-title">
+                    <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                  </h2>
+
+                  <p class="post-description">{post.data.description}</p>
+
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <div class="post-tags">
+                      {post.data.tags.map((tag) => (
+                        <span class="tag">#{tag}</span>
+                      ))}
+                    </div>
+                  )}
+
+                  <a href={`/blog/${post.slug}`} class="read-more">
+                    <span class="arrow">└─$</span> read more →
+                  </a>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+
+      {
+        sortedPosts.length === 0 && (
+          <div class="empty-state">
+            <p class="empty-message">
+              <span class="prompt-symbol">└─$</span> No posts found yet. Check
+              back soon!
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

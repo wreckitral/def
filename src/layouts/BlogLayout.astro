@@ -1,0 +1,537 @@
+---
+import Layout from "./Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { title, description, date, tags, image } = Astro.props;
+
+const formattedDate = date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<Layout title={title}>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+    crossorigin="anonymous"
+  />
+
+  <Header />
+
+  <main class="blog-post-page">
+    <article class="blog-post">
+      <h1 class="post-title">{title}</h1>
+      <p class="post-description">{description}</p>
+
+      <div class="post-meta">
+        <time class="post-date" datetime={date.toISOString()}>
+          📅 {formattedDate}
+        </time>
+      </div>
+
+      {
+        tags && tags.length > 0 && (
+          <div class="post-tags">
+            {tags.map((tag) => (
+              <span class="tag">#{tag}</span>
+            ))}
+          </div>
+        )
+      }
+
+      {image && <img src={image} alt={title} class="hero-image" />}
+
+      <div class="post-content">
+        <slot />
+      </div>
+
+      <footer class="post-footer">
+        <div class="terminal-prompt-footer">
+          <span class="prompt-line">└─$</span>
+          <span class="command">EOF</span>
+        </div>
+        <a href="/blog" class="back-link">
+          <span class="arrow">←</span>
+          <span class="prompt-symbol">└─$</span> cd ~/blog
+        </a>
+      </footer>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog-post-page {
+    min-height: 100vh;
+    padding: 2rem 0 4rem;
+  }
+
+  .blog-post {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Header Styling */
+  .post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .terminal-prompt {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+    opacity: 0.8;
+  }
+
+  .prompt-line {
+    color: var(--success);
+    font-weight: 500;
+  }
+
+  .user {
+    color: var(--accent-blue);
+    font-weight: 600;
+  }
+
+  .path {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .command {
+    color: var(--text-primary);
+  }
+
+  .post-title {
+    font-size: 2.75rem;
+    color: var(--accent-blue);
+    margin: 3rem 0 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .post-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.9rem;
+  }
+
+  .post-date,
+  .reading-time {
+    color: var(--success);
+  }
+
+  .meta-separator {
+    color: var(--border-color);
+  }
+
+  .post-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    background: var(--bg-tertiary);
+    color: var(--warning);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: "JetBrains Mono", monospace;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s;
+  }
+
+  .tag:hover {
+    border-color: var(--warning);
+    transform: translateY(-2px);
+  }
+
+  .hero-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Content Styling */
+  .post-content {
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  /* Headings */
+  .post-content :global(h2) {
+    color: var(--accent-blue);
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .post-content :global(h3) {
+    color: var(--success);
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .post-content :global(h4) {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  /* Paragraphs */
+  .post-content :global(p) {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* Links */
+  .post-content :global(a) {
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-blue);
+    transition: all 0.2s;
+  }
+
+  .post-content :global(a:hover) {
+    color: var(--accent-blue-hover);
+    border-bottom-color: var(--accent-blue-hover);
+  }
+
+  /* Text formatting */
+  .post-content :global(strong) {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  .post-content :global(em) {
+    color: var(--warning);
+    font-style: italic;
+  }
+
+  /* Inline code */
+  .post-content :global(:not(pre) > code) {
+    background: var(--bg-tertiary);
+    color: var(--warning);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Code blocks */
+  .post-content :global(pre) {
+    background: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.75rem;
+    overflow-x: auto;
+    margin: 2rem 0;
+    line-height: 1.6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .post-content :global(pre code) {
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    color: var(--text-primary) !important;
+    font-family: "JetBrains Mono", monospace !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Scrollbar for code blocks */
+  .post-content :global(pre::-webkit-scrollbar) {
+    height: 8px;
+  }
+
+  .post-content :global(pre::-webkit-scrollbar-track) {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+  }
+
+  .post-content :global(pre::-webkit-scrollbar-thumb) {
+    background: var(--border-color);
+    border-radius: 4px;
+  }
+
+  .post-content :global(pre::-webkit-scrollbar-thumb:hover) {
+    background: var(--accent-blue-dim);
+  }
+
+  /* Math equations - KaTeX styling */
+  .post-content :global(.katex) {
+    font-size: 1.15em;
+    color: var(--text-primary);
+  }
+
+  .post-content :global(.katex-display) {
+    margin: 2.5rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .post-content :global(.katex-display::-webkit-scrollbar) {
+    height: 6px;
+  }
+
+  .post-content :global(.katex-display::-webkit-scrollbar-track) {
+    background: var(--bg-secondary);
+  }
+
+  .post-content :global(.katex-display::-webkit-scrollbar-thumb) {
+    background: var(--border-color);
+    border-radius: 3px;
+  }
+
+  /* Lists */
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    margin: 1.5rem 0 1.5rem 2rem;
+    line-height: 1.8;
+  }
+
+  .post-content :global(li) {
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .post-content :global(ul) {
+    list-style: none;
+  }
+
+  .post-content :global(ul li::before) {
+    content: "▸";
+    color: var(--accent-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1.5em;
+    margin-left: -1.5em;
+  }
+
+  .post-content :global(ol) {
+    list-style: decimal;
+    padding-left: 1.5rem;
+  }
+
+  .post-content :global(ol li) {
+    padding-left: 0.5rem;
+  }
+
+  .post-content :global(ol li::marker) {
+    color: var(--accent-blue);
+    font-weight: 600;
+  }
+
+  /* Blockquotes */
+  .post-content :global(blockquote) {
+    border-left: 4px solid var(--accent-blue);
+    padding: 1.25rem 1.75rem;
+    margin: 2rem 0;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--bg-tertiary);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .post-content :global(blockquote p) {
+    margin: 0;
+  }
+
+  /* Images */
+  .post-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 2.5rem 0;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Tables */
+  .post-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    overflow-x: auto;
+    display: block;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+
+  .post-content :global(thead) {
+    background: var(--bg-tertiary);
+  }
+
+  .post-content :global(th),
+  .post-content :global(td) {
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+  }
+
+  .post-content :global(th) {
+    color: var(--accent-blue);
+    font-weight: 600;
+  }
+
+  .post-content :global(tr:hover) {
+    background: var(--bg-tertiary);
+  }
+
+  /* Horizontal rule */
+  .post-content :global(hr) {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 3rem 0;
+  }
+
+  /* Footer */
+  .post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+  }
+
+  .terminal-prompt-footer {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: "JetBrains Mono", monospace;
+    transition: all 0.3s;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    font-size: 0.95rem;
+  }
+
+  .back-link:hover {
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateX(-4px);
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.1);
+  }
+
+  .back-link .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+  }
+
+  .back-link:hover .arrow {
+    transform: translateX(-4px);
+  }
+
+  .back-link .prompt-symbol {
+    color: var(--success);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .blog-post {
+      padding: 0 1rem;
+    }
+
+    .post-title {
+      font-size: 2rem;
+    }
+
+    .post-description {
+      font-size: 1.1rem;
+    }
+
+    .terminal-prompt {
+      font-size: 0.75rem;
+    }
+
+    .post-content {
+      font-size: 1rem;
+    }
+
+    .post-content :global(h2) {
+      font-size: 1.6rem;
+      margin-top: 2.5rem;
+    }
+
+    .post-content :global(h3) {
+      font-size: 1.3rem;
+    }
+
+    .post-content :global(pre) {
+      padding: 1.25rem;
+      font-size: 0.85rem;
+    }
+
+    .post-content :global(.katex-display) {
+      padding: 1rem;
+      font-size: 0.95em;
+    }
+
+    .post-content :global(ul),
+    .post-content :global(ol) {
+      margin-left: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .post-title {
+      font-size: 1.75rem;
+    }
+
+    .post-content {
+      font-size: 0.95rem;
+    }
+
+    .post-content :global(pre) {
+      padding: 1rem;
+      border-radius: 6px;
+    }
+  }
+</style>
