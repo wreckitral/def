@@ -1,7 +1,7 @@
 ---
 title: "About You"
 description: "A robber of my own little heart"
-date: 2025-01-15
+date: 2025-12-26
 tags: ["thoughts", "about", "you"]
 draft: false
 ---
@@ -12,7 +12,6 @@ are as happiest as i am with you.
 the muse of this shallow creativity of mine, thanks for making me fall in love
 with coding hehe, love you
 
-````python
+```python
 print("love, faliux <3")
 ```
-````

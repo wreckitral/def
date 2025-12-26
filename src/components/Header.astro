@@ -1,3 +1,19 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<header class="header">
+  <nav class="nav container">
+    <div class="logo"><a href={`${base}#hero`}>$ ~/defhanaya</a></div>
+    <ul class="nav-links">
+      <li><a href={`${base}/#about`}>./about</a></li>
+      <li><a href={`${base}/#projects`}>./projects</a></li>
+      <li><a href={`${base}/blog`}>./blogs</a></li>
+      <li><a href={`${base}/#contact`}>./contact</a></li>
+    </ul>
+  </nav>
+</header>
+
 <style>
   .header {
     background: var(--bg-secondary);
@@ -36,15 +52,3 @@
     font-size: 0.9rem;
   }
 </style>
-
-<header class="header">
-  <nav class="nav container">
-    <div class="logo"><a href="/#hero">$ ~/defhanaya</a></div>
-    <ul class="nav-links">
-      <li><a href="/#about">./about</a></li>
-      <li><a href="/#projects">./projects</a></li>
-      <li><a href="/blog">./blogs</a></li>
-      <li><a href="/#contact">./contact</a></li>
-    </ul>
-  </nav>
-</header>
