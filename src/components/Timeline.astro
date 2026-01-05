@@ -1,0 +1,415 @@
+<section id="journey" class="journey-section">
+  <div class="container">
+    <h2 class="section-title">Journey</h2>
+
+    <div class="timeline">
+      <!-- Timeline Item 1 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Aug 2024 — Mar 2025</span>
+          <h3 class="timeline-title">
+            Backend Engineer @ LPPM Sriwijaya University
+          </h3>
+          <p class="timeline-description">
+            Developed the official Research and Community Service Institute web
+            application. Optimized database queries reducing backend response
+            times by 30% and integrated dynamic PDF generation for official
+            reports.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Go</span>
+            <span class="timeline-tag">MySQL</span>
+            <span class="timeline-tag">Docker</span>
+            <span class="timeline-tag">REST API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Item 2 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Nov 2024</span>
+          <h3 class="timeline-title">NVIDIA Certified Associate</h3>
+          <p class="timeline-description">
+            Earned NVIDIA-Certified Associate: AI Infrastructure and Operations
+            certification. Became faculty speaker for AI Infrastructure and
+            Operations Training.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">GPU Engineering</span>
+            <span class="timeline-tag">AI Infrastructure</span>
+            <span class="timeline-tag">HPC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Item 3 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Jun 2024 — Jul 2024</span>
+          <h3 class="timeline-title">Intern Software Engineer @ PT. Garam</h3>
+          <p class="timeline-description">
+            Developed a forecast system for product sales using machine
+            learning, achieving a 20% increase in prediction accuracy.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Python</span>
+            <span class="timeline-tag">Scikit-learn</span>
+            <span class="timeline-tag">Pandas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Item 4 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">May 2024</span>
+          <h3 class="timeline-title">Second Place - Competitive Programming</h3>
+          <p class="timeline-description">
+            Won second place in competitive programming competition at IFFEST,
+            demonstrating strong problem-solving and algorithmic skills.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Algorithms</span>
+            <span class="timeline-tag">Problem Solving</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Item 4 -->
+      <!-- Timeline Item 4 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Nov 2023 — Jan 2024</span>
+          <h3 class="timeline-title">
+            Backend Developer @ GDSC Sriwijaya University
+          </h3>
+          <p class="timeline-description">
+            Member of Back-end Development team at Google Developer Student
+            Clubs. Contributed to backend development projects in a hybrid
+            collaborative environment.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Backend</span>
+            <span class="timeline-tag">GDSC</span>
+            <span class="timeline-tag">Team Collaboration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Item 5 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Feb 2024</span>
+          <h3 class="timeline-title">The Gade Awardee</h3>
+          <p class="timeline-description">
+            Received The Gade Award from PT Pegadaian for Outstanding Student
+            Achievement, recognizing academic excellence and contribution to the
+            community.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Achievement</span>
+            <span class="timeline-tag">Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Item 6 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Aug 2022 — Present</span>
+          <h3 class="timeline-title">
+            Computer Science Student @ Sriwijaya University
+          </h3>
+          <p class="timeline-description">
+            Bachelor of Informatics Engineering with 3.84/4.0 GPA. Programming
+            mentor for new students and Explored and implemented
+            memory-optimized CUDA self-attention kernels for LLM inference as a
+            college final project.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">CUDA</span>
+            <span class="timeline-tag">System Design</span>
+            <span class="timeline-tag">Mentoring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .journey-section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin-bottom: 3rem;
+    position: relative;
+    line-height: 1.2;
+  }
+
+  .section-title::before {
+    content: "# ";
+    color: var(--text-secondary);
+  }
+
+  .timeline {
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  /* The vertical line */
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--border-color);
+  }
+
+  .timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: calc(50% + 40px);
+    position: relative;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .timeline-item.reveal {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: calc(50% + 40px);
+    transform: translateX(100px);
+  }
+
+  .timeline-item:nth-child(even).reveal {
+    transform: translateX(0);
+  }
+
+  /* The dot on the timeline */
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    border: 3px solid var(--bg-primary);
+    box-shadow: 0 0 0 3px var(--border-color);
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-item.reveal .timeline-dot {
+    box-shadow:
+      0 0 0 3px var(--accent-blue-dim),
+      0 0 20px rgba(88, 166, 255, 0.3);
+    background: var(--accent-blue-hover);
+  }
+
+  .timeline-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-blue) 0%,
+      var(--accent-blue-hover) 100%
+    );
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .timeline-content:hover::before {
+    transform: scaleX(1);
+  }
+
+  .timeline-content:hover {
+    border-color: var(--accent-blue-dim);
+    box-shadow: 0 8px 32px rgba(88, 166, 255, 0.1);
+    transform: translateY(-4px);
+  }
+
+  /* Arrow pointing to the timeline */
+  .timeline-content::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid var(--border-color);
+  }
+
+  .timeline-item:nth-child(even) .timeline-content::after {
+    left: -10px;
+    right: auto;
+    border-left: none;
+    border-right: 10px solid var(--border-color);
+  }
+
+  .timeline-date {
+    display: inline-block;
+    background: var(--bg-tertiary);
+    color: var(--success);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .timeline-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .timeline-tag {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .journey-section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .timeline::before {
+      left: 20px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-left: 60px;
+      padding-right: 0;
+      transform: translateX(0);
+      opacity: 0;
+    }
+
+    .timeline-item.reveal,
+    .timeline-item:nth-child(even).reveal {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-dot {
+      left: 20px;
+    }
+
+    .timeline-content::after {
+      left: -10px;
+      right: auto;
+      border-left: none;
+      border-right: 10px solid var(--border-color);
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::after {
+      left: -10px;
+      border-right: 10px solid var(--border-color);
+      border-left: none;
+    }
+
+    .timeline-content {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .timeline-tags {
+      gap: 0.3rem;
+    }
+
+    .timeline-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+    }
+  }
+</style>
+
+<!-- JavaScript for scroll animation with smooth retraction -->
+<script>
+  function reveal() {
+    const items = document.querySelectorAll(".timeline-item");
+
+    items.forEach((item) => {
+      const itemTop = item.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      // Reveal when item is in viewport (with buffer zone)
+      if (itemTop < windowHeight * 0.8) {
+        item.classList.add("reveal");
+      }
+      // Retract only when item is significantly above viewport
+      else if (itemTop > windowHeight * 0.95) {
+        item.classList.remove("reveal");
+      }
+    });
+  }
+
+  reveal();
+  window.addEventListener("scroll", reveal);
+</script>
