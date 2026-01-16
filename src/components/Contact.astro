@@ -568,9 +568,19 @@
     font-weight: 500;
   }
 
-  @media (max-width: 968px) {
+  @media (max-width: 1024px) {
     .contact-content {
       grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-info {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-content {
       gap: 2rem;
     }
 
@@ -588,14 +598,18 @@
       font-size: 1.5rem;
     }
 
-    .contact-info {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
     .terminal-body {
       padding: 1.5rem;
       font-size: 0.9rem;
+    }
+
+    .contact-content {
+      gap: 2rem;
+    }
+
+    .contact-info {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     .info-card {
@@ -610,12 +624,42 @@
 
     .submit-button {
       justify-content: center;
+      padding: 0.75rem 1.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      font-size: 0.85rem;
+      padding: 0.75rem;
     }
   }
 
   @media (max-width: 480px) {
+    .contacts-section {
+      padding: 2rem 0;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-content {
+      gap: 1.5rem;
+    }
+
     .contact-info {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     .info-card {
@@ -626,6 +670,31 @@
       flex-direction: column;
       text-align: center;
       gap: 0.5rem;
+    }
+
+    .card-header h3 {
+      font-size: 1rem;
+    }
+
+    .contact-detail {
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-link {
+      font-size: 0.85rem;
+    }
+
+    .availability-card {
+      padding: 1.5rem;
+    }
+
+    .availability-card .card-header h3 {
+      font-size: 1rem;
+    }
+
+    .availability-text {
+      font-size: 0.9rem;
     }
   }
 </style>
