@@ -692,6 +692,16 @@ body {
 @media (max-width: 480px) {
   /* Terminal window uses responsive sizing from main rule */
 
+  .hero .terminal-window {
+    height: min(85vh, 500px);
+    margin-top: 40px;
+  }
+
+  .hero-content {
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
   .portfolio-section {
     padding: 2rem 0;
   }
