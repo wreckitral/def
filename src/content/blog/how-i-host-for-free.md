@@ -1,7 +1,7 @@
 ---
 title: "How I Host My Personal Web for $0 Using a Raspberry Pi"
 description: "Ditching Vercel and GitHub Pages to become my own Sysadmin with Docker, Cloudflare Tunnels, and a student email."
-date: 2026-1-15
+date: 2026-2-15
 tags: ["how-i-do", "infrastructure", "personal"]
 draft: false
 ---
