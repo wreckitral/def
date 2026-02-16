@@ -124,7 +124,7 @@ Tailscale creates a private, encrypted mesh network. It gives my Raspberry Pi a 
 1. **Install Tailscale on the Pi:**
 
 ```bash
-curl -fsSL [https://tailscale.com/install.sh](https://tailscale.com/install.sh) | sh
+curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up
 ```
 
